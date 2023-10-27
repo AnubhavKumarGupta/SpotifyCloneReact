@@ -4,7 +4,7 @@ import RightSection from '../../Sections/RightSection'
 import Controls from './../../Sections/Controls/Controls'
 const SpotifyHome = () => {
   return (
-    <div className='w-full h-full flex justify-between'>
+    <div className='w-full h-full flex justify-between overflow-hidden'>
       <LeftSection/>
       <RightSection/>
       <Controls/>

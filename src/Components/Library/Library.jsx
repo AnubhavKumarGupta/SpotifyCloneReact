@@ -2,7 +2,9 @@ import React from 'react'
 
 const Library = () => {
   return (
-    <div className='w-full h-[77%] bg-red-600'>Library</div>
+    <div className='w-[98%] h-[77%] m-1 rounded-md bg-red-600'>
+      
+    </div>
   )
 }
 

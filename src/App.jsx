@@ -9,7 +9,7 @@ function App() {
   }
   return (
     <main className='w-screen h-screen bg-black text-white'>
-      {isLoggedIn ? <SpotifyHome /> : <Login onLogin={handleIsLoginState} />}
+      {isLoggedIn ? <SpotifyHome isLogin={isLoggedIn} /> : <Login onLogin={handleIsLoginState} />}
     </main>
   )
 }

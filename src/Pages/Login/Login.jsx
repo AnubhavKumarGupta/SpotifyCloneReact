@@ -11,6 +11,10 @@ const Login = (props) => {
                onClick={handleLogin}> 
                     Login Here
             </button>
+            <button className='px-8 py-4 text-green-400 border-2 border-green-400 rounded-full w-fit mt-20 select-none hover:text-white hover:bg-green-400'
+               onClick={handleLogin}> 
+                    continue without sign in
+            </button>
         </div>
     )
 }
