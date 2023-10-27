@@ -1,8 +1,11 @@
-import React from 'react'
-
+import LeftNav from './LeftNav/LeftNav'
+import RightNav from './RightNav/RightNav'
 const Navbar = () => {
   return (
-    <div className='w-full h-[75px] bg-green-400'>Navbar</div>
+    <div className='w-full h-[75px] bg-[#101010] flex items-center justify-between p-4'>
+      <LeftNav/>             
+      <RightNav/>      
+    </div>
   )
 }
 

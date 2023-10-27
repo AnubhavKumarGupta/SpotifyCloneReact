@@ -1,0 +1,8 @@
+#control-bar {
+  background: rgb(175, 41, 150);
+  background: linear-gradient(
+    90deg,
+    rgba(175, 41, 150, 1) 0%,
+    rgba(81, 154, 245, 1) 45%
+  );
+}
