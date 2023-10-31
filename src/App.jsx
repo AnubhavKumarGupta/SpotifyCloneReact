@@ -5,16 +5,17 @@ import SpotifyHome from './Pages/SpotifyHome/SpotifyHome'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // this function will executes when user clicks on button 
-  const handleIsLoginState = () => {
+  const HandleLogin = () => {
     setIsLoggedIn(true)
   }
+
+  const HandleLogOut = () => {
+    setIsLoggedIn(false)
+  }
+
   return (
     <main className='w-screen h-screen bg-black text-white'>
-
-      {/* if the isLoggedIn is 'True' user will redirected to the Home page else vice versa */}
-
-      {isLoggedIn ? <SpotifyHome /> : <Login onLogin={handleIsLoginState} />}
+      {isLoggedIn ? <SpotifyHome loginStatus={isLoggedIn} /> : <Login onLogout={HandleLogOut} onLogin={HandleLogin} />}
     </main>
   )
 }

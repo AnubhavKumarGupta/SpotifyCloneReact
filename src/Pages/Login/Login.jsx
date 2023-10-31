@@ -3,8 +3,10 @@ import React from 'react'
 const Login = (props) => {
     // passing setIsLoggedIn as prop 
     const handleLogin = () => {
-        //setting the setISLoggedIn to true
         props.onLogin();
+    }
+    const handleLogout = () => {
+        props.onLogout()
     }
 
     return (
@@ -16,10 +18,6 @@ const Login = (props) => {
                 <button className='px-8 py-4 text-green-400 border-2 border-green-400 rounded-full  mt-20 select-none hover:text-white hover:bg-green-400'
                     onClick={handleLogin}>
                     Login Here
-                </button>
-                <button className='px-8 py-4 text-green-400 border-2 border-green-400 rounded-full  mt-20 select-none hover:text-white hover:bg-green-400'
-                    onClick={handleLogin}>
-                    Continue Without Sign In
                 </button>
             </div>
         </div>

@@ -2,11 +2,11 @@ import React from 'react'
 import TopNav from '../Components/Navbar/TopNav'
 import Library from './../Components/Library/Library'
 
-const LeftSection = () => {
+const LeftSection = (props) => {
   return (
     <div className='w-[24%] h-screen'>
-        <TopNav/>
-        <Library/>
+        <TopNav loginStatus={props.loginStatus}/>
+        <Library loginStatus={props.loginStatus} DUMMY_DATA={props.DUMMY_DATA}/>
     </div>
   )
 }
