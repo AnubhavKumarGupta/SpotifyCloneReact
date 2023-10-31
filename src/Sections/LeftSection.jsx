@@ -5,8 +5,8 @@ import Library from './../Components/Library/Library'
 const LeftSection = (props) => {
   return (
     <div className='w-[24%] h-screen'>
-        <TopNav loginStatus={props.loginStatus}/>
-        <Library loginStatus={props.loginStatus} DUMMY_DATA={props.DUMMY_DATA}/>
+        <TopNav />
+        <Library DUMMY_DATA={props.DUMMY_DATA}/>
     </div>
   )
 }

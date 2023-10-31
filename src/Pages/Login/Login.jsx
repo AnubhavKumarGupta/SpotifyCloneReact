@@ -1,14 +1,12 @@
-import React from 'react'
+import { useContext } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 
 const Login = (props) => {
-    // passing setIsLoggedIn as prop 
-    const handleLogin = () => {
-        props.onLogin();
-    }
-    const handleLogout = () => {
-        props.onLogout()
-    }
 
+    const context = useContext(UserContext)
+    const handleLogin = () => {
+        context.handlingLogin();
+    }
     return (
         <div className='w-full flex flex-col pt-10 items-center justify-center'>
             <h2 className='text-white text-center font-extrabold text-lg tracking-wide'>WelCome To Spotify</h2>

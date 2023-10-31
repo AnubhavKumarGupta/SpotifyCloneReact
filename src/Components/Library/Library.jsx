@@ -1,13 +1,18 @@
-import { BiLibrary, BiSearchAlt2 } from 'react-icons/bi'
-import { AiOutlinePlus, AiOutlineBars } from 'react-icons/ai'
-import { BsGlobe } from 'react-icons/bs'
 import CreatePlaylistReminder from './../CreatePlaylistReminder/CreatePlaylistReminder'
 import Button from '../Buttons/Button'
 import FilterBtns from '../FilterBtns/FilterBtns'
 import LibraryItem from './LibraryItems/LibraryItem'
-
+import { BiLibrary, BiSearchAlt2 } from 'react-icons/bi'
+import { AiOutlinePlus, AiOutlineBars } from 'react-icons/ai'
+import { BsGlobe } from 'react-icons/bs'
+import { useContext } from 'react'
+import { UserContext } from '../../Contexts/UserContext'
 import './Library.css'
+
+
+
 const Library = (props) => {
+  const context = useContext(UserContext)
   return (
     <div className='w-[98%] h-[77%] m-[4px] rounded-md bg-[#121212] p-2'>
       <div>
@@ -18,7 +23,7 @@ const Library = (props) => {
           <AiOutlinePlus className='text-[25px] text-gray-400 hover:text-white cursor-pointer' />
         </div>
         {
-          props.loginStatus ? <div className='my-5'>
+          context.userLogin ? <div className='my-5'>
             <FilterBtns label='Playlists' />
             <FilterBtns label='Artists' />
             <FilterBtns label='Albums' />
@@ -27,7 +32,7 @@ const Library = (props) => {
       </div>
 
       {
-        props.loginStatus ?
+        context.userLogin ?
           <div className='library-scroll w-full h-full overflow-y-scroll'>
             <div className='flex items-center justify-between mx-4'><BiSearchAlt2 className='text-lg text-gray-400 hover:text-white cursor-pointer' /> <h2 className='flex items-center justify-center text-md text-gray-400 hover:text-white cursor-pointer'>Recent <AiOutlineBars className='mx-1' /></h2></div>
             <div className='wrapper w-full'>
