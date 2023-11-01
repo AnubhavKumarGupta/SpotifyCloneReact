@@ -7,6 +7,9 @@ const Login = (props) => {
     const handleLogin = () => {
         context.handlingLogin();
     }
+    const handleLogout = () => {
+        context.handlingLogout();
+    }
     return (
         <div className='w-full flex flex-col pt-10 items-center justify-center'>
             <h2 className='text-white text-center font-extrabold text-lg tracking-wide'>WelCome To Spotify</h2>

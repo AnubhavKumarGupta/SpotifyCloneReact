@@ -7,7 +7,8 @@ function App() {
     const context = useContext(UserContext);
     return (
         <main className='w-screen h-screen bg-black text-white'>
-            {context.userLogin ? <SpotifyHome /> : <Login/>}
+            {context.userLogin ? <SpotifyHome /> : <Login />}
+            {/* <Login/> */}
         </main>
     );
 }
