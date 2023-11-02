@@ -86,7 +86,7 @@ const SpotifyHome = (props) => {
     },
   ]
   return (
-    <div className='w-full h-full flex justify-between overflow-hidden'>
+    <div className='w-screen h-screen flex justify-between overflow-hidden'>
       <LeftSection DUMMY_DATA={DUMMY_PLAYLISTS} />
       <RightSection  DUMMY_DATA={DUMMY_PLAYLISTS} />
       <Controls/>

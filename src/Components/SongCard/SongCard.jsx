@@ -2,12 +2,14 @@ import React from 'react'
 
 const SongCard = (props) => {
   return (
-    <div className='w-[210px] h-[290px] p-5 rounded-lg bg-[#191818] hover:bg-[#242424]'>
-        <img src={props.songImg ? props.songImg : 'http://via.placeholder.com/300x300'} className='h-auto object-contain' alt="song-img" />
-        <div className='mt-2 text-left justify-start'>
-            <h2 className='text-md text-white text-left font-bold tracking-wide my-2'>{props.songName}</h2>
-            <p className='text-sm text-gray-400 font-semibold '>{props.songDesc}</p>
-        </div>
+    <div className='w-[220px] h-[300px] p-5 rounded-lg bg-[#191818] hover:bg-[#242424]'>
+      <div className='w-[180px] h-[180px]'>
+        <img src={props.songImg} alt="song-img" className='w-full h-full object-contain' />
+      </div>
+      <div className='mt-2 text-left justify-start pb-3'>
+        <h2 className='text-md text-white text-left font-bold tracking-wide my-2'>{props.songName}</h2>
+        <p className='text-sm text-gray-400 font-semibold '>{props.songDesc}</p>
+      </div>
     </div>
   )
 }
