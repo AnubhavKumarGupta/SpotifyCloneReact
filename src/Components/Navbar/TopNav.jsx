@@ -2,14 +2,11 @@ import React, { useContext } from 'react'
 import logo from './../../assets/Spotify.png'
 import { AiFillHome } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
-import { UserContext } from './../../Contexts/UserContext'
 const TopNav = (props) => {
-
-  const context = useContext(UserContext)
   return (
     <ul className='w-[98%] h-[23%] bg-[#121212] flex flex-col items-start justify-center px-5 rounded-md m-[4px]' id='top-nav' >
       {
-        !context.userLogin ? <li className='flex flex-row '>
+        false ? <li className='flex flex-row '>
           <a className='flex flex-row justify-between items-center' href="#">
             <img src={logo} className='h-[30px] object-contain' alt="logo" />
           </a>

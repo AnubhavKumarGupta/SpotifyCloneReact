@@ -1,13 +1,14 @@
-import { UserContext } from './../../../Contexts/UserContext'
 import { FaGripLinesVertical } from 'react-icons/fa'
-import {MdDownloading} from 'react-icons/md'
-import {AiOutlineBell} from 'react-icons/ai'
-import { useContext } from 'react'
+import { MdDownloading } from 'react-icons/md'
+import { AiOutlineBell } from 'react-icons/ai'
+import { useStateProvider } from './../../../Store/UserContext'
 import Button from './../../Buttons/Button'
 import Navlink from './../NavLink/NavLink'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { reducerCases } from './../../../Store/constants'
 
 const RightNav = () => {
-    const context = useContext(UserContext)
     const navLinks = [
         {
             label: 'Premium',
@@ -19,14 +20,35 @@ const RightNav = () => {
             label: 'Download',
         },
     ]
+    const [{ token , userInfo }, dispatch] = useStateProvider();
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const { data } = await axios.get("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: "Bearer " + token,
+                    "Content-Type": "application/json",
+                },
+            });
+            const userInfo = {
+                userId: data.id,
+                userUrl: data.external_urls.spotify,
+                name: data.display_name,
+            };
+            dispatch({ type: reducerCases.SET_USER, userInfo });
+        };
+        getUserInfo();
+    }, [dispatch, token]);
+
     return (
         <>
             {
-                context.userLogin ?
+                token ?
                     <div className='flex items-center justify-center gap-5'>
-                        <Button buttonTheme='WHITE' button='explore premium'/>
-                        <Button buttonTheme='DARK' button='install app' icon={<MdDownloading className='text-lg'/>}/>
-                        <AiOutlineBell className='text-lg rounded-full bg-[#0F0F0F] cursor-pointer'/>
+                        <Button buttonTheme='WHITE' button='explore premium' />
+                        <Button buttonTheme='DARK' button='install app' icon={<MdDownloading className='text-lg' />} />
+                        <AiOutlineBell className='text-lg rounded-full bg-[#0F0F0F] cursor-pointer' />
+                        <a className='text-md text-white font-semibold' key={userInfo?.userId} href={userInfo?.userUrl}>{userInfo?.name}</a>
                         <img src='https://via.placeholder.com/250' className='w-[35px] h-[35px] rounded-full select-none' alt="profile-img" />
                     </div>
                     :

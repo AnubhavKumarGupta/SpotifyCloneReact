@@ -1,16 +1,13 @@
 import './Controls.css'
 import Button from './../../Components/Buttons/Button'
-import { useContext } from 'react'
-import { UserContext } from './../../Contexts/UserContext'
 import { AiFillStepForward, AiFillStepBackward, AiFillPlayCircle } from 'react-icons/ai'
 import { BiSolidVolumeFull } from 'react-icons/bi'
 import LibraryItem from '../../Components/Library/LibraryItems/LibraryItem'
 const Controls = () => {
-  const context = useContext(UserContext)
 
   return <>
     {
-      context.userLogin ?
+      true ?
 
         <div className='w-full h-[90px] absolute bottom-0 left-0 flex items-center justify-between bg-black'>
 

@@ -5,14 +5,41 @@ import LibraryItem from './LibraryItems/LibraryItem'
 import { BiLibrary, BiSearchAlt2 } from 'react-icons/bi'
 import { AiOutlinePlus, AiOutlineBars } from 'react-icons/ai'
 import { BsGlobe } from 'react-icons/bs'
-import { useContext } from 'react'
-import { UserContext } from '../../Contexts/UserContext'
+import { useStateProvider } from './../../Store/UserContext'
+import axios from 'axios'
 import './Library.css'
+import { useEffect } from 'react'
+import { reducerCases } from '../../Store/constants'
 
 
 
 const Library = (props) => {
-  const context = useContext(UserContext)
+
+  const [{ token, playlists }, dispatch] = useStateProvider();
+  useEffect(() => {
+    const getPlaylistData = async () => {
+      const response = await axios.get(
+        "https://api.spotify.com/v1/me/playlists",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const { items } = response.data;
+      const playlists = items.map(({ name, id ,type, owner,images}) => {
+        const {url} = images[1]; 
+        const {display_name } = owner;
+        return { name, id ,type , display_name , url};
+      });
+  
+      
+      dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
+    };
+    getPlaylistData();
+  }, [token, dispatch]);
+
   return (
     <div className='w-[98%] h-[77%] m-[4px] rounded-md bg-[#121212] p-2'>
       <div>
@@ -23,7 +50,7 @@ const Library = (props) => {
           <AiOutlinePlus className='text-[25px] text-gray-400 hover:text-white cursor-pointer' />
         </div>
         {
-          context.userLogin ? <div className='my-5'>
+          token ? <div className='my-5'>
             <FilterBtns label='Playlists' />
             <FilterBtns label='Artists' />
             <FilterBtns label='Albums' />
@@ -32,12 +59,18 @@ const Library = (props) => {
       </div>
 
       {
-        context.userLogin ?
+        token ?
           <div className='library-scroll w-full h-full overflow-y-scroll'>
             <div className='flex items-center justify-between mx-4'><BiSearchAlt2 className='text-lg text-gray-400 hover:text-white cursor-pointer' /> <h2 className='flex items-center justify-center text-md text-gray-400 hover:text-white cursor-pointer'>Recent <AiOutlineBars className='mx-1' /></h2></div>
             <div className='wrapper w-full'>
               {
-                props.DUMMY_DATA.map(item => <LibraryItem coverImg={item.songImg} title={item.songName} type={item.songType} artist={item.artist} />)
+                playlists.map(item => <LibraryItem 
+                  key={item.id} 
+                  coverImg={item.url}
+                  title={item.name} 
+                  type={item.type} 
+                  artist={item.display_name}
+                  />)
               }
             </div>
           </div>

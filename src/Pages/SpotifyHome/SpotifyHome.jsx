@@ -44,46 +44,6 @@ const SpotifyHome = (props) => {
       songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
       songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
     },
-    {
-      id: 'p-6',
-      songName: 'Loki Verse 2.0',
-      songType: 'Playlist',
-      artist: 'anirudh',
-      songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
-      songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
-    },
-    {
-      id: 'p-7',
-      songName: 'Loki Verse 2.0',
-      artist: 'anirudh',
-      songType: 'Playlist',
-      songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
-      songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
-    },
-    {
-      id: 'p-8',
-      songName: 'Loki Verse 2.0',
-      artist: 'anirudh',
-      songType: 'Playlist',
-      songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
-      songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
-    },
-    {
-      id: 'p-9',
-      songName: 'Loki Verse 2.0',
-      artist: 'anirudh',
-      songType: 'Playlist',
-      songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
-      songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
-    },
-    {
-      id: 'p-10',
-      songName: 'Loki Verse 2.0',
-      artist: 'anirudh',
-      songType: 'Playlist',
-      songDesc: 'Loki Verse 2.0 by Anirudh Ravichander',
-      songImg: 'https://c.saavncdn.com/415/Leo-Original-Motion-Picture-Soundtrack-English-2023-20231019170311-500x500.jpg'
-    },
   ]
   return (
     <div className='w-screen h-screen flex justify-between overflow-hidden'>
