@@ -33,9 +33,9 @@ const Library = (props) => {
         const {display_name } = owner;
         return { name, id ,type , display_name , url};
       });
-  
       
       dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
+      console.log(playlists);
     };
     getPlaylistData();
   }, [token, dispatch]);
