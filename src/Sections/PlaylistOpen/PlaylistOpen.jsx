@@ -61,7 +61,7 @@ const PlaylistOpen = () => {
                                 <p className='text-white text-md mt-3'>{selectedPlaylist.description}</p>
                             </div>
                         </div>
-                        <div id='list' className='w-full h-full flex flex-col px-5'>
+                        <table id='list' className='w-full h-full flex flex-col px-5'>
                             <thead>
                                 <tr className='w-full text-left' id='playlist-head'>
                                     <th>#</th>
@@ -70,11 +70,12 @@ const PlaylistOpen = () => {
                                     <th><BiTimeFive /></th>
                                 </tr>
                             </thead>
-                            {
-                                selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album, context_uri, track_number }, index) => {
-                                    return (
-                                        <tbody>
-                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1' id='playlist-body'>
+                            <tbody>
+                                {
+                                    selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album, context_uri, track_number }, index) => {
+                                        return (
+
+                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1' id='playlist-body' key={id}>
                                                 <td className='flex items-center justify-center'>{index + 1}</td>
                                                 <td>
                                                     <div className='flex items-center justify-start'>
@@ -92,11 +93,11 @@ const PlaylistOpen = () => {
                                                     <span>{msToMinutes(duration)}</span>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    )
-                                })
-                            }
-                        </div>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
                     </>
                 )
             }

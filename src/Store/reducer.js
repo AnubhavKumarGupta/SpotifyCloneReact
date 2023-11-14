@@ -8,6 +8,7 @@ export const intialState = {
   topAlbums: [],
   selectedPlaylist:null,
   intialPlaylistId:'1P06JA4tvgoDtwOsnL2gCq',
+  currentlyPlaying:null,
 };
 
 const reducer = (state, action) => {
@@ -47,6 +48,12 @@ const reducer = (state, action) => {
         ...state,
         topAlbums: action.topAlbums,
       };
+    }
+    case reducerCases.SET_PLAYING:{
+      return {
+        ...state,
+        currentlyPlaying : action.currentlyPlaying,
+      }
     }
     default: {
       return state;

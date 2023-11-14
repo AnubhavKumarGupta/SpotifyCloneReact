@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import Login from "./Pages/Login/Login";
-import SpotifyHome from './Pages/SpotifyHome/SpotifyHome';
 import { UserContextProvider, useStateProvider } from './Store/UserContext';
-import reducer, { intialState } from "./Store/reducer";
 import { reducerCases } from "./Store/constants";
+import reducer, { intialState } from "./Store/reducer";
+import SpotifyHome from './Pages/SpotifyHome/SpotifyHome';
+import Login from "./Pages/Login/Login";
 
 function App() {
 

@@ -1,15 +1,17 @@
-import CreatePlaylistReminder from './../CreatePlaylistReminder/CreatePlaylistReminder'
-import Button from '../Buttons/Button'
-import FilterBtns from '../FilterBtns/FilterBtns'
-import LibraryItem from './LibraryItems/LibraryItem'
 import { BiLibrary, BiSearchAlt2 } from 'react-icons/bi'
 import { AiOutlinePlus, AiOutlineBars } from 'react-icons/ai'
 import { BsGlobe } from 'react-icons/bs'
 import { useStateProvider } from './../../Store/UserContext'
-import axios from 'axios'
-import './Library.css'
 import { useEffect } from 'react'
 import { reducerCases } from '../../Store/constants'
+
+import CreatePlaylistReminder from './../CreatePlaylistReminder/CreatePlaylistReminder'
+import Button from '../Buttons/Button'
+import FilterBtns from '../FilterBtns/FilterBtns'
+import LibraryItem from './LibraryItems/LibraryItem'
+import axios from 'axios'
+import './Library.css'
+
 
 
 
@@ -35,7 +37,6 @@ const Library = (props) => {
       });
       
       dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
-      console.log(playlists);
     };
     getPlaylistData();
   }, [token, dispatch]);

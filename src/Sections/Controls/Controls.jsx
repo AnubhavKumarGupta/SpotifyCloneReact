@@ -2,17 +2,21 @@ import './Controls.css'
 import Button from './../../Components/Buttons/Button'
 import { AiFillStepForward, AiFillStepBackward, AiFillPlayCircle } from 'react-icons/ai'
 import { BiSolidVolumeFull } from 'react-icons/bi'
-import LibraryItem from '../../Components/Library/LibraryItems/LibraryItem'
+import CurrentlyPlaying from '../../Components/CurrentlyPlaying/CurrentlyPlaying'
+import { useStateProvider } from './../../Store/UserContext'
+
 const Controls = () => {
+
+  const [{ token }] = useStateProvider();
 
   return <>
     {
-      true ?
+      token ?
 
         <div className='w-full h-[90px] absolute bottom-0 left-0 flex items-center justify-between bg-black'>
 
-          <div className='h-full w-[250px]'> 
-          <LibraryItem />
+          <div className='h-full w-[250px]'>
+            <CurrentlyPlaying />
           </div>
 
           <div className='h-full w-[600px] flex flex-col items-center justify-center'>

@@ -1,10 +1,18 @@
 const Login = (props) => {
     const handleLogin = () => {
         const CLIENT_ID = "686e35c887ab457596f1134cbf938a3e";
-        const scopes =
-            "user-top-read user-follow-read playlist-read-private user-library-read";
+        const api_uri = "https://accounts.spotify.com/authorize";
+        const scope = [
+            "user-read-private",
+            "user-read-email",
+            "user-modify-playback-state",
+            "user-read-playback-state",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-top-read",
+          ];
         const REDIRECT_URI = "http://localhost:5173/";
-        window.location.href = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scopes=${scopes}&show_dialog=true`;
+        window.location.href = `${api_uri}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scope.join(" ")}&response_type=token&show_dialog=true`;
     }
 
 
