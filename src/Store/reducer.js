@@ -2,13 +2,14 @@ import { reducerCases } from "./constants";
 
 export const intialState = {
   token: null,
-  playlists: [],
   userInfo: null,
-  artistsData: [],
-  topAlbums: [],
   selectedPlaylist:null,
-  intialPlaylistId:'1P06JA4tvgoDtwOsnL2gCq',
   currentlyPlaying:null,
+  playerState:false,
+  intialPlaylistId:'1P06JA4tvgoDtwOsnL2gCq',
+  artistsData: [],
+  playlists: [],
+  topAlbums: [],
 };
 
 const reducer = (state, action) => {
@@ -53,6 +54,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentlyPlaying : action.currentlyPlaying,
+      }
+    }
+    case reducerCases.SET_PLAYER_STATE :{
+      return {
+        ...state,
+        playerState : action.playerState,
       }
     }
     default: {

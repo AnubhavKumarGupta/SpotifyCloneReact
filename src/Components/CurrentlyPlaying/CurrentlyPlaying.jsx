@@ -18,14 +18,13 @@ const CurrentlyPlaying = () => {
                 const currentlyPlaying = {
                     id: item.id,
                     name: item.name,
-                    artists: item.artists.map(artist => artist.name),
-                    image: item.album.images[0].url
+                    artists: item.artists.map(artist => artist.name + ', '),
+                    image: item.album.images[0].url,
                 }
                 dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying })
             } else {
                 dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: null })
             }
-            console.log(response);
         }
 
         getCurrectTrack()
@@ -40,7 +39,7 @@ const CurrentlyPlaying = () => {
                     </div>
                     <div className="text-white flex flex-col text-left ml-3">
                         <h2 className="text-md">{currentlyPlaying.name}</h2>
-                        <p className=" text-xs break-words tracking-widest mt-1 text-gray-100">{currentlyPlaying.artists}</p>
+                        <p className=" text-xs break-words mt-1 text-gray-100 hover:underline tracking-wider">{currentlyPlaying.artists}</p>
                     </div>
                 </div>
             }
