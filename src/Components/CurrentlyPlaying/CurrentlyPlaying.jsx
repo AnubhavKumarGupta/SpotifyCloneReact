@@ -26,9 +26,8 @@ const CurrentlyPlaying = () => {
                 dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: null })
             }
         }
-
         getCurrectTrack()
-    }, [token, dispatch, currentlyPlaying])
+    }, [token, dispatch,])
     return (
         <>
             {

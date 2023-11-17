@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import './PlaylistOpen.css'
+import { useEffect } from 'react'
 import { reducerCases } from '../../Store/constants'
 
 // importing icons 
@@ -40,12 +40,34 @@ const PlaylistOpen = () => {
         getIntialPlaylist();
     }, [token, dispatch])
 
+
+    const getSongInfo = async (trackId) => {
+        const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        })
+        console.log(response.data);
+        const songData = response.data
+        const songInfo = {
+            id: songData.id,
+            name: songData.name,
+            artists: songData.artists.map(artist => artist.name + ', '),
+            image: songData.album.images[0].url,
+        }
+        dispatch({type: reducerCases.SET_PLAYING , currentlyPlaying : songInfo})
+    }
+
+
     const msToMinutes = (ms) => {
         const minutes = Math.floor(ms / 60000)
         const seconds = Math.floor((ms / 60000) / 1000).toFixed(0)
         return (minutes + ':' + (seconds < 10 ? '0' : '') + seconds)
 
     }
+
+
     return (
         <div id='playlist-container' className="w-full h-full my-1 rounded-sm bg-[#121212] overflow-y-scroll">
             {
@@ -75,7 +97,7 @@ const PlaylistOpen = () => {
                                     selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album, context_uri, track_number }, index) => {
                                         return (
 
-                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1' id='playlist-body' key={id}>
+                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1' id='playlist-body' key={id} onClick={() => getSongInfo(id)}>
                                                 <td className='flex items-center justify-center'>{index + 1}</td>
                                                 <td>
                                                     <div className='flex items-center justify-start'>

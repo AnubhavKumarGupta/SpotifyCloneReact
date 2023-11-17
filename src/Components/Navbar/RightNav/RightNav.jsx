@@ -20,7 +20,7 @@ const RightNav = () => {
             label: 'Download',
         },
     ]
-    const [{ token , userInfo }, dispatch] = useStateProvider();
+    const [{ token, userInfo }, dispatch] = useStateProvider();
 
     useEffect(() => {
         const getUserInfo = async () => {
@@ -50,6 +50,7 @@ const RightNav = () => {
                         <AiOutlineBell className='text-lg rounded-full bg-[#0F0F0F] cursor-pointer' />
                         <a className='text-md text-white font-semibold' key={userInfo?.userId} href={userInfo?.userUrl}>{userInfo?.name}</a>
                         <img src='https://via.placeholder.com/250' className='w-[35px] h-[35px] rounded-full select-none' alt="profile-img" />
+                        {/* <p className='px-4 py-1 bg-[#282828] rounded-sm text-sm absolute right-5 top-24 cursor-pointer border-2 border-black'>Log out</p> */}
                     </div>
                     :
                     <div className='flex items-center justify-between'>
