@@ -67,6 +67,7 @@ const Library = (props) => {
               {
                 playlists.map(item => <LibraryItem 
                   key={item.id} 
+                  id={item.id}
                   coverImg={item.url}
                   title={item.name} 
                   type={item.type} 

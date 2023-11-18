@@ -6,10 +6,12 @@ export const intialState = {
   selectedPlaylist:null,
   currentlyPlaying:null,
   playerState:false,
-  intialPlaylistId:'1P06JA4tvgoDtwOsnL2gCq',
+  view:'HOME',
+  selectedPlaylistId:'45pGRUpBruO3WnMDiAj2oq',
   artistsData: [],
   playlists: [],
-  topAlbums: [],
+  featuredPlaylist : [],
+  newReleases:[]
 };
 
 const reducer = (state, action) => {
@@ -44,22 +46,34 @@ const reducer = (state, action) => {
         selectedPlaylist: action.selectedPlaylist,
       };
     }
-    case reducerCases.SET_ALBUMS: {
-      return {
-        ...state,
-        topAlbums: action.topAlbums,
-      };
-    }
     case reducerCases.SET_PLAYING:{
       return {
         ...state,
         currentlyPlaying : action.currentlyPlaying,
       }
     }
-    case reducerCases.SET_PLAYER_STATE :{
+    case reducerCases.SET_VIEW : {
       return {
         ...state,
-        playerState : action.playerState,
+        view : action.view,
+      }
+    }
+    case reducerCases.SET_SELECTED_PLAYLISTID:{
+      return {
+        ...state,
+        selectedPlaylistId : action.selectedPlaylistId,
+      }
+    }
+    case reducerCases.SET_FEATURED_PLAYLISTS:{
+      return {
+        ...state,
+        featuredPlaylist : action.featuredPlaylist,
+      }
+    }
+    case reducerCases.SET_NEW_RELEASES:{
+      return{
+        ...state,
+        newReleases : action.newReleases,
       }
     }
     default: {

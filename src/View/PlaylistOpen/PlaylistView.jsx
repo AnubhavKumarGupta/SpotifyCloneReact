@@ -7,11 +7,11 @@ import { BiTimeFive } from 'react-icons/bi'
 import axios from 'axios'
 import { useStateProvider } from '../../Store/UserContext'
 
-const PlaylistOpen = () => {
-    const [{ token, selectedPlaylist, intialPlaylistId }, dispatch] = useStateProvider()
+const PlaylistView = () => {
+    const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()
     useEffect(() => {
         const getIntialPlaylist = async () => {
-            const response = await axios.get(`https://api.spotify.com/v1/playlists/${intialPlaylistId}`, {
+            const response = await axios.get(`https://api.spotify.com/v1/playlists/${selectedPlaylistId}`, {
                 headers: {
                     Authorization: 'Bearer ' + token,
                     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const PlaylistOpen = () => {
             dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist })
         };
         getIntialPlaylist();
-    }, [token, dispatch])
+    }, [token,selectedPlaylistId, dispatch])
 
 
     const getSongInfo = async (trackId) => {
@@ -56,7 +56,7 @@ const PlaylistOpen = () => {
             artists: songData.artists.map(artist => artist.name + ', '),
             image: songData.album.images[0].url,
         }
-        dispatch({type: reducerCases.SET_PLAYING , currentlyPlaying : songInfo})
+        dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: songInfo })
     }
 
 
@@ -94,10 +94,10 @@ const PlaylistOpen = () => {
                             </thead>
                             <tbody>
                                 {
-                                    selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album, context_uri, track_number }, index) => {
+                                    selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album }, index) => {
                                         return (
 
-                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1' id='playlist-body' key={id} onClick={() => getSongInfo(id)}>
+                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1 cursor-pointer' id='playlist-body' key={id} onClick={() => getSongInfo(id)}>
                                                 <td className='flex items-center justify-center'>{index + 1}</td>
                                                 <td>
                                                     <div className='flex items-center justify-start'>
@@ -127,4 +127,4 @@ const PlaylistOpen = () => {
     )
 }
 
-export default PlaylistOpen
+export default PlaylistView
