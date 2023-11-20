@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './../Components/Navbar/Navbar'
 import Albums from './../View/Albums/Albums'
 import Search from '../View/Search/Search'
+import AlbumView from './../View/AlbumView/AlbumView'
 
 import PlaylistView from '../View/PlaylistOpen/PlaylistView'
 import { useStateProvider } from '../Store/UserContext'
@@ -13,6 +14,7 @@ const RightSection = () => {
       {view == 'HOME' && <Albums/>}
       {view == 'PLAYLIST' && <PlaylistView/>}
       {view == 'SEARCH' && <Search/>}
+      {view == 'ALBUM' && <AlbumView/>}
     </div>
   )
 }

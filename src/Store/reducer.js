@@ -4,14 +4,16 @@ export const intialState = {
   token: null,
   userInfo: null,
   selectedPlaylist:null,
+  selectedAlbum:null,
   currentlyPlaying:null,
   playerState:false,
   view:'HOME',
   selectedPlaylistId:'45pGRUpBruO3WnMDiAj2oq',
+  selectedAlbumInfo: {},
   artistsData: [],
   playlists: [],
   featuredPlaylist : [],
-  newReleases:[]
+  newReleases:[],
 };
 
 const reducer = (state, action) => {
@@ -74,6 +76,18 @@ const reducer = (state, action) => {
       return{
         ...state,
         newReleases : action.newReleases,
+      }
+    }
+    case reducerCases.SET_SELECTED_ALBUM:{
+      return {
+        ...state,
+        selectedAlbum : action.selectedAlbum,
+      }
+    }
+    case reducerCases.SET_SELECTED_ALBUM_INFO:{
+      return {
+        ...state,
+        selectedAlbumInfo : action.selectedAlbumInfo,
       }
     }
     default: {

@@ -24,7 +24,7 @@ const Login = (props) => {
 
     return (
         <div className='w-full h-full flex flex-col items-center justify-center'>
-            <img src={background} id='bg-img' />
+            <img src={background} id='bg-img' loading='eager'/>
             <div id='login-page' className='flex flex-col items-center'>
                 <h2 className='text-5xl text-white font-bold tracking-wide capitalize  text-center mt-20'>Spotify clone by</h2>
                 <h2 className='text-5xl text-white font-bold tracking-wide capitalize mt-3 text-center'>Nikhil Sai</h2>

@@ -22,3 +22,12 @@
     display: grid;
     grid-template-columns: 0.3fr 3.1fr 2fr 0.5fr;
   }
+
+  #album-head{
+    display: grid;
+    grid-template-columns: 0.4fr 4fr 0.5fr;
+  }
+  #album-body{
+    display: grid;
+    grid-template-columns: 0.4fr 4fr 0.5fr;
+  }
