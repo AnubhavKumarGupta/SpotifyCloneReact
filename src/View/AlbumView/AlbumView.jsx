@@ -79,7 +79,7 @@ const AlbumView = () => {
                             {index + 1}
                           </td>
                           <td className='flex flex-col text-left'>
-                            <div>
+                            <div              >
                               {
                                 name
                               }

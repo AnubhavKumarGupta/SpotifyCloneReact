@@ -9,7 +9,7 @@ import { useStateProvider } from '../Store/UserContext'
 const RightSection = () => {
   const [{view}] = useStateProvider()
   return (
-    <div className='w-[76%] h-screen bg-[#000000] overflow-hidden'>
+    <div className='w-[76%] h-full bg-[#000000] overflow-hidden'>
       <Navbar/>
       {view == 'HOME' && <Albums/>}
       {view == 'PLAYLIST' && <PlaylistView/>}
