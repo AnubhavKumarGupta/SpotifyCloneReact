@@ -7,7 +7,7 @@ import './../PlaylistOpen/PlaylistOpen.css'
 import { reducerCases } from '../../Store/constants'
 
 const AlbumView = () => {
-  const [{ token, selectedAlbum, selectedAlbumInfo }, dispatch] = useStateProvider()
+  const [{ token, selectedAlbum, selectedAlbumInfo ,currentlyPlaying}, dispatch] = useStateProvider()
   useEffect(() => {
     const getSelectedAlbum = async () => {
       const response = await axios.get(`https://api.spotify.com/v1/albums/${selectedAlbumInfo.id}/tracks`, {
@@ -39,6 +39,19 @@ const AlbumView = () => {
     getSelectedAlbum()
   }, [])
 
+  const updateCurrentSong = (id,name,artist,image) =>{
+      if(id != ' '){
+        const currentlyPlaying = {
+          id : id,
+          name : name,
+          artist : artist,
+          image : image,
+        }
+        dispatch({type : reducerCases.SET_PLAYING , currentlyPlaying : currentlyPlaying})
+      }else{
+        dispatch({type : reducerCases.SET_PLAYING , currentlyPlaying : null})
+      }
+  }
 
   const msToMinutes = (ms) => {
     const minutes = Math.floor(ms / 60000)
@@ -74,7 +87,7 @@ const AlbumView = () => {
                   {
                     selectedAlbum.tracks.map(({id,name,duration,artist},index) => {
                       return (
-                        <tr key={id} id='album-body' className='w-full my-1 hover:bg-[#27282D] px-5 py-3 cursor-pointer rounded-md'>
+                        <tr key={id} id='album-body' className='w-full my-1 hover:bg-[#27282D] px-5 py-3 cursor-pointer rounded-md' onClick={() => {updateCurrentSong(id,name,artist,selectedAlbum.image)}}>
                           <td className='flex items-center'>
                             {index + 1}
                           </td>

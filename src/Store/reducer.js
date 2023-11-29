@@ -14,6 +14,7 @@ export const intialState = {
   playlists: [],
   featuredPlaylist : [],
   newReleases:[],
+  searchData : null,
 };
 
 const reducer = (state, action) => {
@@ -88,6 +89,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         selectedAlbumInfo : action.selectedAlbumInfo,
+      }
+    }
+    case reducerCases.SET_SEARCH_DATA:{
+      return{
+        ...state,
+        searchData : action.searchData,
       }
     }
     default: {

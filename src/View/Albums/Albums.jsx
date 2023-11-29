@@ -39,7 +39,7 @@ const Albums = () => {
     };
 
     const getFeaturedPlaylist = async () => {
-      const response = await axios.get('https://api.spotify.com/v1/browse/featured-playlists', {
+      const response = await axios.get('https://api.spotify.com/v1/browse/featured-playlists?limit=10', {
         headers: {
           Authorization: 'Bearer ' + token,
           'Content-Type': 'application/json',
