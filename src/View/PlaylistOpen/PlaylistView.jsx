@@ -31,14 +31,15 @@ const PlaylistView = () => {
                     image: track.album.images[2].url,
                     duration: track.duration_ms,
                     album: track.album.name,
-                    context_uri: track.album.uri,
+                    uri: track.uri,
                     track_number: track.track_number,
                 })),
             };
+            // console.log('track uri',selectedPlaylist.tracks[0].uri);
             dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist })
         };
         getIntialPlaylist();
-    }, [token,selectedPlaylistId, dispatch])
+    }, [token, selectedPlaylistId, dispatch])
 
 
     const getSongInfo = async (trackId) => {
@@ -48,7 +49,6 @@ const PlaylistView = () => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(response.data);
         const songData = response.data
         const songInfo = {
             id: songData.id,
@@ -59,14 +59,28 @@ const PlaylistView = () => {
         dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: songInfo })
     }
 
+    const playSong = async (uri) => {
+        const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+            method: 'PUT',
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({uris : [uri] })
+        })
+        dispatch({type : reducerCases.SET_PLAYER_STATE , playerState : true})
+    }
+
+    const setPlayingState = (id, uri) => {
+        getSongInfo(id)
+        playSong(uri)
+    }
 
     const msToMinutes = (ms) => {
         const minutes = Math.floor(ms / 60000)
         const seconds = Math.floor((ms / 60000) / 1000).toFixed(0)
         return (minutes + ':' + (seconds < 10 ? '0' : '') + seconds)
     }
-
-
     return (
         <div id='playlist-container' className="w-full h-full my-1 rounded-sm bg-[#121212] overflow-y-scroll">
             {
@@ -93,10 +107,10 @@ const PlaylistView = () => {
                             </thead>
                             <tbody>
                                 {
-                                    selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album }, index) => {
+                                    selectedPlaylist.tracks.map(({ id, name, artists, image, duration, album, uri }, index) => {
                                         return (
 
-                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1 cursor-pointer' id='playlist-body' key={id} onClick={() => getSongInfo(id)}>
+                                            <tr className='w-full my-1 hover:bg-[#27282D] py-1 cursor-pointer' id='playlist-body' key={id} onClick={() => setPlayingState(id, uri)}>
                                                 <td className='flex items-center justify-center'>{index + 1}</td>
                                                 <td>
                                                     <div className='flex items-center justify-start'>

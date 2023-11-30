@@ -1,19 +1,32 @@
 import { reducerCases } from "./constants";
 
 export const intialState = {
-  token: null,
-  userInfo: null,
+  token: null, 
+
+  userInfo: null, 
+
   selectedPlaylist:null,
+
   selectedAlbum:null,
+
   currentlyPlaying:null,
+
   playerState:false,
+
   view:'HOME',
+
   selectedPlaylistId:'45pGRUpBruO3WnMDiAj2oq',
+
   selectedAlbumInfo: {},
+
   artistsData: [],
+
   playlists: [],
+
   featuredPlaylist : [],
+
   newReleases:[],
+
   searchData : null,
 };
 
@@ -95,6 +108,12 @@ const reducer = (state, action) => {
       return{
         ...state,
         searchData : action.searchData,
+      }
+    }
+    case reducerCases.SET_PLAYER_STATE:{
+      return{
+        ...state,
+        playerState : action.playerState,
       }
     }
     default: {

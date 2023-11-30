@@ -7,7 +7,7 @@ import './../PlaylistOpen/PlaylistOpen.css'
 import { reducerCases } from '../../Store/constants'
 
 const AlbumView = () => {
-  const [{ token, selectedAlbum, selectedAlbumInfo ,currentlyPlaying}, dispatch] = useStateProvider()
+  const [{ token, selectedAlbum, selectedAlbumInfo }, dispatch] = useStateProvider()
   useEffect(() => {
     const getSelectedAlbum = async () => {
       const response = await axios.get(`https://api.spotify.com/v1/albums/${selectedAlbumInfo.id}/tracks`, {
@@ -23,14 +23,14 @@ const AlbumView = () => {
         id: selectedAlbumInfo.id,
         image: selectedAlbumInfo.image,
         type: selectedAlbumInfo.type,
-        name : selectedAlbumInfo.name,
+        name: selectedAlbumInfo.name,
 
         tracks: items.map((track) => ({
           id: track.id,
           name: track.name,
           duration: track.duration_ms,
           artist: track.artists.map(artist => artist.name + ", "),
-          uri : track.uri
+          uri: track.uri
         }))
       }
 
@@ -39,26 +39,38 @@ const AlbumView = () => {
     getSelectedAlbum()
   }, [])
 
-  const updateCurrentSong = (id,name,artist,image) =>{
-      if(id != ' '){
-        const currentlyPlaying = {
-          id : id,
-          name : name,
-          artist : artist,
-          image : image,
-        }
-        dispatch({type : reducerCases.SET_PLAYING , currentlyPlaying : currentlyPlaying})
-      }else{
-        dispatch({type : reducerCases.SET_PLAYING , currentlyPlaying : null})
+  const updateCurrentSong = (id, name, artist, image, uri) => {
+    if (id != ' ') {
+      const currentlyPlaying = {
+        id: id,
+        name: name,
+        artist: artist,
+        image: image,
       }
+      dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: currentlyPlaying })
+    } else {
+      dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: null })
+    }
+    playSong(uri)
+  }
+
+  const playSong = async (uri) => {
+    const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+      method: 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ uris: [uri] })
+    })
+    dispatch({type : reducerCases.SET_PLAYER_STATE , playerState : true})
   }
 
   const msToMinutes = (ms) => {
     const minutes = Math.floor(ms / 60000)
     const seconds = Math.floor((ms / 60000) / 1000).toFixed(0)
     return (minutes + ':' + (seconds < 10 ? '0' : '') + seconds)
-
-}
+  }
   return (
     <div className='w-full h-full my-1 rounded-sm bg-[#121212] overflow-y-scroll' id='playlist-container'>
       {
@@ -83,35 +95,35 @@ const AlbumView = () => {
                   <th><BiTimeFive /></th>
                 </tr>
               </thead>
-              <tbody> 
-                  {
-                    selectedAlbum.tracks.map(({id,name,duration,artist},index) => {
-                      return (
-                        <tr key={id} id='album-body' className='w-full my-1 hover:bg-[#27282D] px-5 py-3 cursor-pointer rounded-md' onClick={() => {updateCurrentSong(id,name,artist,selectedAlbum.image)}}>
-                          <td className='flex items-center'>
-                            {index + 1}
-                          </td>
-                          <td className='flex flex-col text-left'>
-                            <div              >
-                              {
-                                name
-                              }
-                            </div>
-                            <div className='text-xs mt-1 text-gray-300'>
-                              {
-                                artist
-                              }
-                            </div>
-                          </td>
-                          <td className='flex items-center'>
+              <tbody>
+                {
+                  selectedAlbum.tracks.map(({ id, name, duration, artist,uri }, index) => {
+                    return (
+                      <tr key={id} id='album-body' className='w-full my-1 hover:bg-[#27282D] px-5 py-3 cursor-pointer rounded-md' onClick={() => { updateCurrentSong(id, name, artist, selectedAlbum.image, uri) }}>
+                        <td className='flex items-center'>
+                          {index + 1}
+                        </td>
+                        <td className='flex flex-col text-left'>
+                          <div              >
                             {
-                              msToMinutes(duration)
+                              name
                             }
-                          </td>
-                        </tr>
-                      )
-                    })
-                  }
+                          </div>
+                          <div className='text-xs mt-1 text-gray-300'>
+                            {
+                              artist
+                            }
+                          </div>
+                        </td>
+                        <td className='flex items-center'>
+                          {
+                            msToMinutes(duration)
+                          }
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
               </tbody>
             </table>
           </>

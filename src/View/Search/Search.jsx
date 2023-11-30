@@ -116,8 +116,8 @@ const Search = () => {
                     </ul>
                   </div>
                   <div className='w-full px-4 mt-5 '>
-                    <div className='w-full flex flex-wrap gap-5'>
-                      <SongRow DUMMY_DATA={searchData.albums} title='featured playlist' />
+                    <div className='w-full flex flex-wrap gap-5 overflow-x-hidden'>
+                      <SongRow DUMMY_DATA={searchData.albums.slice(0,5)} title='featured playlist' />
                     </div>
                   </div>
                   <div className='w-full px-4 mt-5 '>

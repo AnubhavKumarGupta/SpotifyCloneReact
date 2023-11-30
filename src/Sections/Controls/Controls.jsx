@@ -7,10 +7,32 @@ import { BiSolidVolumeFull } from 'react-icons/bi'
 import { FaCirclePause } from "react-icons/fa6";
 import { IoShuffle } from "react-icons/io5";
 import { SlLoop } from "react-icons/sl";
+import { reducerCases } from '../../Store/constants'
 
 const Controls = () => {
 
   const [{ token, playerState }, dispatch] = useStateProvider();
+
+  const handlePlayerState = () => {
+    if(playerState){
+      dispatch({type : reducerCases.SET_PLAYER_STATE, playerState : false})
+    }else{
+      dispatch({type : reducerCases.SET_PLAYER_STATE, playerState : true})
+    }
+  }
+
+  //should work on the pause button
+  const handlePause =  async  () => {
+    const response = await fetch('https://api.spotify.com/v1/me/player/pause',{
+      method : 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ device: [device_id] })
+    })
+  }
+
 
   return <>
     {
@@ -27,15 +49,10 @@ const Controls = () => {
               <IoShuffle className='text-[18px] cursor-pointer' />
               <AiFillStepBackward className='text-[28px] cursor-pointer'/>
               {
-                playerState ? <FaCirclePause className='text-[34px] hover:scale-110 cursor-pointer' /> : <AiFillPlayCircle className='text-[34px] hover:scale-110 cursor-pointer' />
+                playerState ? <FaCirclePause className='text-[34px] hover:scale-110 cursor-pointer' onClick={handlePlayerState}/> : <AiFillPlayCircle className='text-[34px] hover:scale-110 cursor-pointer' onClick={handlePlayerState}/>
               }
               <AiFillStepForward className='text-[28px] cursor-pointer'/>
               <SlLoop className='text-[18px] cursor-pointer' />
-            </div>
-            <div className='w-full flex items-center justify-center gap-3 my-2'>
-              <p className='text-xs select-none'>00:00</p>
-              <input type="range" id="song-range" className='w-full rounded-full' min={0} />
-              <p className='text-xs select-none'>00:00</p>
             </div>
           </div>
 
