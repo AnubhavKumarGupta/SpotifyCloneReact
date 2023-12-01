@@ -13,12 +13,8 @@ const Login = (props) => {
             "user-read-recently-played",
             "user-top-read",
         ];
-        const REDIRECT_URI = "http://localhost:5173/";
+        const REDIRECT_URI = "https://spotifyclone-nikhil.vercel.app/";
         window.location.href = `${api_uri}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scope.join(" ")}&response_type=token&show_dialog=true`;
-    }
-
-    const handleLoginWithDemo = () => {
-        window.location.href = 'http://localhost:5173/'
     }
 
     return (
