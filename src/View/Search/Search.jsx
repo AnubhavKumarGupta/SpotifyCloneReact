@@ -30,7 +30,7 @@ const Search = () => {
       }
     })
     const data = response.data
-    console.log(data);
+    // console.log(data);
     const searchData = {
       playlist: {
         id: data.playlists.items[0].id,
@@ -45,6 +45,7 @@ const Search = () => {
         artist: song.album.artists.map(artist => artist.name),
         image: song.album.images[0]?.url,
         duration: song.duration_ms,
+        uri : song.uri
       })),
 
       artists: data.artists.items.map(artist => ({
@@ -65,6 +66,13 @@ const Search = () => {
     }
     dispatch({ type: reducerCases.SET_SEARCH_DATA, searchData: searchData })
   }
+
+
+  const openPlaylist = (playlistId) => {
+    console.log(playlistId);
+    dispatch({ type: reducerCases.SET_VIEW, view: 'PLAYLIST' })
+    dispatch({ type: reducerCases.SET_SELECTED_PLAYLISTID, selectedPlaylistId: playlistId })
+  }
   return (
     <div id='song-container' className='w-[100%] h-[100%] overflow-y-scroll bg-[#121212] mt-1'>
       <div className='w-full h-16 my-5'>
@@ -79,7 +87,7 @@ const Search = () => {
                 ?
                 <>
                   <div className='w-full h-[300px] flex justify-between items-center px-5'>
-                    <div className='w-[38%] py-4 bg-[#1f1f1f] rounded-lg cursor-pointer hover:bg-[#282828] group relative flex justify-center flex-col gap-5'>
+                    <div className='w-[38%] py-4 bg-[#1f1f1f] rounded-lg cursor-pointer hover:bg-[#282828] group relative flex justify-center flex-col gap-5' onClick={() => openPlaylist(searchData.playlist.id)}>
                       <div className='w-full px-4 pt-4'>
                         <img src={searchData.playlist.image} className='w-[120px] h-[120px] shadow-md group-hover:shadow-black' />
                       </div>
@@ -117,7 +125,7 @@ const Search = () => {
                   </div>
                   <div className='w-full px-4 mt-5 '>
                     <div className='w-full flex flex-wrap gap-5 overflow-x-hidden'>
-                      <SongRow DUMMY_DATA={searchData.albums.slice(0,5)} title='featured playlist' />
+                      <SongRow DUMMY_DATA={searchData.albums.slice(0, 5)} title='featured playlist' />
                     </div>
                   </div>
                   <div className='w-full px-4 mt-5 '>

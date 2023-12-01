@@ -1,6 +1,6 @@
 const Artist = ({artist}) => {
   return (
-    <div className='w-[250px]   flex flex-col items-center justify-center cursor-pointer bg-[#191818] hover:bg-[#2A2A2A] py-3 rounded-md mb-40'>
+    <div className='w-[250px]   flex flex-col items-center justify-center cursor-pointer bg-[#191818] hover:bg-[#2A2A2A] py-3 rounded-md mb-40' key={artist.id} >
         <div className='w-[200px] h-[200px] rounded-full flex items-center justify-center shadow-sm shadow-gray-100'>
             <img src={artist.url} alt={artist.name} className='w-full h-full object-cover rounded-full'/>
         </div>
