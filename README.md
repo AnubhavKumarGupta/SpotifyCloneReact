@@ -81,7 +81,7 @@ To run the app on your local machine:
     ```bash
     npm run dev
     ```
-7. Open your browser and visit: [http://localhost:3000](http://localhost:3000)
+7. Open your browser and visit: http://localhost:5173/
 
 ## Technologies Used
 
