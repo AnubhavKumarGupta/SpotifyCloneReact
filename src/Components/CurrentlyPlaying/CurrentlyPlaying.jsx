@@ -27,7 +27,7 @@ const CurrentlyPlaying = () => {
             }
         }
         getCurrectTrack()
-    }, [token, dispatch,])
+    }, [token, dispatch,currentlyPlaying])
     return (
         <>
             {
