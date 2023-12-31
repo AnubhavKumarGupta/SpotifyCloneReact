@@ -1,5 +1,5 @@
 import './Controls.css'
-import Button from './../../Components/Buttons/Button'
+import Button from '../../components/Buttons/Button'
 import CurrentlyPlaying from '../../Components/CurrentlyPlaying/CurrentlyPlaying'
 import { AiFillStepForward, AiFillStepBackward, AiFillPlayCircle } from 'react-icons/ai'
 import { useStateProvider } from './../../Store/UserContext'

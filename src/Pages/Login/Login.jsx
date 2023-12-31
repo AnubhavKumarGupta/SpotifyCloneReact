@@ -1,5 +1,5 @@
 import './Login.css'
-import background from './../../assets/BGcover.jpg'
+import background from '../../assests/BGcover.webp'
 const Login = (props) => {
     const handleLogin = () => {
         const CLIENT_ID = "686e35c887ab457596f1134cbf938a3e";
@@ -13,7 +13,7 @@ const Login = (props) => {
             "user-read-recently-played",
             "user-top-read",
         ];
-        const REDIRECT_URI = "https://spotifyclone-nikhil.vercel.app/";
+        const REDIRECT_URI = 'http://localhost:5173/' || "https://spotifyclone-nikhil.vercel.app/";
         window.location.href = `${api_uri}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scope.join(" ")}&response_type=token&show_dialog=true`;
     }
 
@@ -25,7 +25,6 @@ const Login = (props) => {
                 <h2 className='text-5xl text-white font-bold tracking-wide capitalize mt-3 text-center'>Nikhil Sai</h2>
                 <div className='flex flex-col items-center justify-center mt-10'>
                     <button className='w-fit px-5 py-2 text-lg capitalize text-white bg-[#1ed760] rounded-full font-bold' onClick={handleLogin}>connect to spotify</button>
-                    {/* <button className='w-fit px-5 py-2 text-lg capitalize text-white bg-[#1ed760] rounded-full mt-3 font-bold' onClick={handleLoginWithDemo}>login With Demo</button> */}
                 </div>
             </div>
         </div>
