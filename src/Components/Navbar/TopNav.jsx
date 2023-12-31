@@ -28,7 +28,7 @@ const TopNav = () => {
         </div>
       </li>
       <li className='flex flex-row mt-4 text-[20px] font-semibold capitalize cursor-pointer'>
-        <div className='flex flex-row justify-between items-center' onClick={() => { dispatch({ type: reducerCases.SET_VIEW, view: 'SEARCH' }) }}>
+        <div className='flex flex-row justify-between items-center' onClick={() => { navigate('/search') }}>
           <BiSearchAlt className='mr-4 text-[26px]' /> search
         </div>
       </li>
