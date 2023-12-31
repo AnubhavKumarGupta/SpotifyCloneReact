@@ -3,8 +3,8 @@ import { UserContextProvider, useStateProvider } from './Store/UserContext';
 import { reducerCases } from "./Store/constants";
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import reducer, { intialState } from "./Store/reducer";
-import Home from './Pages/Home/Home';
-import Login from "./Pages/Login/Login";
+import Home from './pages/Home/Home';
+import Login from "./pages/Login/Login";
 import Search from './pages/search/Search'
 import Playlist from './pages/playlist/Playlist'
 import Album from './pages/album/Album'
