@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { UserContextProvider, useStateProvider } from './Store/UserContext';
 import { reducerCases } from "./Store/constants";
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import reducer, { intialState } from "./Store/reducer";
 import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
@@ -12,16 +12,22 @@ import Error from './pages/error/Error'
 
 function App() {
     const [{ token }, dispatch] = useStateProvider()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     useEffect(() => {
         const hash = window.location.hash
         if (hash) {
             const token = hash.substring(1).split('&')[0].split('=')[1];
             dispatch({ type: reducerCases.SET_TOKEN, token })
-            navigate('/home');
         }
+
+        navigate('/login');
     }, [dispatch])
 
+    useEffect(() => {
+        if (token) {
+            navigate('/home')
+        }
+    }, [token])
     return (
         <main className='w-screen h-screen bg-black text-white'>
             <Routes>

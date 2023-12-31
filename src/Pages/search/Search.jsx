@@ -6,8 +6,10 @@ import Artist from './../../Components/Artist/Artist'
 import SongCard from '../../components/SongCard/SongCard';
 import SongRow from '../../components/rows/songRow/SongRow'
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
+import Left from '../../Sections/leftSection/Left'
+import RightSection from '../../Sections/rightSection/RightSection'
+import Controls from '../../Sections/Controls/Controls'
 import React from 'react'
-// import '';
 import axios from 'axios';
 
 const Search = () => {
@@ -73,7 +75,7 @@ const Search = () => {
     dispatch({ type: reducerCases.SET_SELECTED_PLAYLISTID, selectedPlaylistId: playlistId })
   }
   return (
-    <ContentWrapper>
+    <ContentWrapper className="w-full h-screen overflow-hidden flex">
       <Left />
       <RightSection className='w-[100%] h-[100%] overflow-y-scroll bg-[#121212] mt-1 song-container'>
         <div className='w-full h-16 my-5'>

@@ -8,9 +8,9 @@ import axios from 'axios'
 import { useStateProvider } from '../../Store/UserContext'
 
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import Left from '../../sections/leftSection/Left'
+import Left from '../../Sections/leftSection/Left'
 import Controls from '../../Sections/Controls/Controls'
-import RightSection from '../../sections/rightSection/RightSection'
+import RightSection from '../../Sections/rightSection/RightSection'
 
 const Playlist = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()
