@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useStateProvider } from '../../Store/UserContext'
 
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import Left from '../../Sections/leftSection/Left'
+import Left from '../../Sections/leftSection/Left.jsx'
 import Controls from '../../Sections/Controls/Controls'
 import RightSection from '../../Sections/rightSection/RightSection'
 
@@ -33,7 +33,7 @@ const Playlist = () => {
                     id: track.id,
                     name: track.name,
                     artists: track.artists.map((artist) => artist.name),
-                    image: track.album.images[2].url,
+                    image: track.album.images[2]?.url,
                     duration: track.duration_ms,
                     album: track.album.name,
                     uri: track.uri,

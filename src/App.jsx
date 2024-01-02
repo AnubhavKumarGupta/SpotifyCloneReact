@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { UserContextProvider, useStateProvider } from './Store/UserContext';
 import { reducerCases } from "./Store/constants";
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import reducer, { intialState } from "./Store/reducer";
 import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
