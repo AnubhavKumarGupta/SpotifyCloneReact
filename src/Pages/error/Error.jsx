@@ -2,7 +2,7 @@ import React from 'react'
 
 const Error = () => {
   return (
-    <div>404</div>
+    <div className='w-full h-screen flex items-center justify-center'>404</div>
   )
 }
 

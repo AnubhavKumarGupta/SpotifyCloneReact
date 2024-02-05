@@ -11,6 +11,7 @@ import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
 import Left from '../../Sections/leftSection/Left.jsx'
 import Controls from '../../Sections/Controls/Controls'
 import RightSection from '../../Sections/rightSection/RightSection'
+import Navbar from '../../Components/Navbar/Navbar.jsx'
 
 const Playlist = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()
@@ -90,6 +91,7 @@ const Playlist = () => {
         <ContentWrapper className="w-full h-screen overflow-hidden flex">
             <Left />
             <RightSection className="bg-[#121212] overflow-y-scroll playlist-container">
+                <Navbar/>
                 {
                     selectedPlaylist && (
                         <>

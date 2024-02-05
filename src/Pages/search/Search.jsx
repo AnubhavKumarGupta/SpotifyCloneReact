@@ -11,6 +11,7 @@ import RightSection from '../../Sections/rightSection/RightSection'
 import Controls from '../../Sections/Controls/Controls'
 import React from 'react'
 import axios from 'axios';
+import Navbar from '../../Components/Navbar/Navbar';
 
 const Search = () => {
   const [{ token, featuredPlaylist, searchData }, dispatch] = useStateProvider();
@@ -78,6 +79,7 @@ const Search = () => {
     <ContentWrapper className="w-full h-screen overflow-hidden flex">
       <Left />
       <RightSection className='w-[100%] h-[100%] overflow-y-scroll bg-[#121212] mt-1 song-container'>
+        <Navbar/>
         <div className='w-full h-16 my-5'>
           <input type="text" id="search-inout" className='w-1/4 bg-white rounded-full px-4 py-3 ms-10 border-2 border-black text-sm capitalize placeholder:text-sm text-black outline-none' placeholder='search' onChange={(e) => handleSearchInput(e)} />
         </div>

@@ -9,6 +9,7 @@ import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
 import Left from '../../sections/leftSection/Left'
 import Controls from '../../Sections/Controls/Controls'
 import RightSection from '../../sections/rightSection/RightSection'
+import Navbar from '../../Components/Navbar/Navbar'
 
 
 const Album = () => {
@@ -78,6 +79,7 @@ const Album = () => {
         <ContentWrapper className="w-full h-screen overflow-hidden flex items-center justify-center">
             <Left />
             <RightSection className='bg-[#121212] playlist-container'>
+                <Navbar/>
                 {
                     selectedAlbum && (
                         <>

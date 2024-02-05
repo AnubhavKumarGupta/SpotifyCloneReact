@@ -6,6 +6,7 @@ import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
 import SongRow from '../../components/rows/songRow/SongRow'
 import ArtistRow from '../../components/rows/artistRow/ArtistRow';
 import LoadingSkeletonRow from '../../Components/LoadingSkeletons/LoadingSkeletonRow'
+import Navbar from '../../Components/Navbar/Navbar'
 
 import './Home.css';
 
@@ -91,6 +92,7 @@ const Home = (props) => {
     <ContentWrapper className="w-full h-screen overflow-hidden flex items-center justify-center">
       <Left />
       <RightSection className='song-container overflow-y-scroll bg-[#121212] mt-1'>
+        <Navbar />
         {playlistLoading == 'loading' && <SongRow DUMMY_DATA={playlists} title='your playlists' />}
         {playlistLoading != 'loading' && <LoadingSkeletonRow />}
         {!featureLoading && <SongRow DUMMY_DATA={featuredPlaylist} title='featured playlist' />}
