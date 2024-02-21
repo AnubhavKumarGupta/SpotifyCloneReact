@@ -5,11 +5,11 @@ import { BiTimeFive } from 'react-icons/bi'
 
 import '../playlist/Playlist.css'
 import { reducerCases } from '../../Store/constants'
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import Left from '../../sections/leftSection/Left'
+import Left from '../../Sections/LeftSection/Left'
 import Controls from '../../Sections/Controls/Controls'
-import RightSection from '../../sections/rightSection/RightSection'
+import RightSection from '../../Sections/RightSection/RightSection'
 import Navbar from '../../Components/Navbar/Navbar'
+import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper'
 
 
 const Album = () => {

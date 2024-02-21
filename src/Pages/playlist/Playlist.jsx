@@ -6,12 +6,11 @@ import { reducerCases } from '../../Store/constants'
 import { BiTimeFive } from 'react-icons/bi'
 import axios from 'axios'
 import { useStateProvider } from '../../Store/UserContext'
-
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import Left from '../../Sections/leftSection/Left.jsx'
+import Left from '../../Sections/LeftSection/Left.jsx'
 import Controls from '../../Sections/Controls/Controls'
-import RightSection from '../../Sections/rightSection/RightSection'
+import RightSection from '../../Sections/RightSection/RightSection.jsx'
 import Navbar from '../../Components/Navbar/Navbar.jsx'
+import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper.jsx'
 
 const Playlist = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()

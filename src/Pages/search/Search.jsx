@@ -1,17 +1,19 @@
 import { useStateProvider } from './../../Store/UserContext'
 import { reducerCases } from '../../Store/constants';
+
 import { FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 import Artist from './../../Components/Artist/Artist'
-import SongCard from '../../components/SongCard/SongCard';
-import SongRow from '../../components/rows/songRow/SongRow'
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import Left from '../../Sections/leftSection/Left'
-import RightSection from '../../Sections/rightSection/RightSection'
+import SongCard from '../../Components/SongCard/SongCard';
+import SongRow from '../../Components/rows/songRow/SongRow'
+import Navbar from '../../Components/Navbar/Navbar';
+import Left from '../../Sections/LeftSection/Left'
+import RightSection from '../../Sections/RightSection/RightSection'
 import Controls from '../../Sections/Controls/Controls'
 import React from 'react'
 import axios from 'axios';
-import Navbar from '../../Components/Navbar/Navbar';
+import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper';
 
 const Search = () => {
   const [{ token, featuredPlaylist, searchData }, dispatch] = useStateProvider();

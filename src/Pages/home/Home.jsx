@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import Left from '../../sections/leftSection/Left'
-import RightSection from '../../sections/rightSection/RightSection'
+
+import Left from '../../Sections/LeftSection/Left'
+import RightSection from '../../Sections/RightSection/RightSection'
 import Controls from '../../Sections/Controls/Controls'
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
-import SongRow from '../../components/rows/songRow/SongRow'
-import ArtistRow from '../../components/rows/artistRow/ArtistRow';
+import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper'
+import SongRow from '../../Components/rows/songRow/SongRow'
+import ArtistRow from '../../Components/rows/artistRow/ArtistRow';
 import LoadingSkeletonRow from '../../Components/LoadingSkeletons/LoadingSkeletonRow'
 import Navbar from '../../Components/Navbar/Navbar'
 
