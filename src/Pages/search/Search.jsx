@@ -14,6 +14,7 @@ import Controls from '../../Sections/Controls/Controls'
 import React from 'react'
 import axios from 'axios';
 import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper';
+import Img from '../../Components/LazyImages/Img';
 
 const Search = () => {
   const [{ token, featuredPlaylist, searchData }, dispatch] = useStateProvider();
@@ -70,8 +71,7 @@ const Search = () => {
     }
     dispatch({ type: reducerCases.SET_SEARCH_DATA, searchData: searchData })
   }
-
-
+  
   const openPlaylist = (playlistId) => {
     console.log(playlistId);
     dispatch({ type: reducerCases.SET_VIEW, view: 'PLAYLIST' })
@@ -81,7 +81,7 @@ const Search = () => {
     <ContentWrapper className="w-full h-screen overflow-hidden flex">
       <Left />
       <RightSection className='w-[100%] h-[100%] overflow-y-scroll bg-[#121212] mt-1 song-container'>
-        <Navbar/>
+        <Navbar />
         <div className='w-full h-16 my-5'>
           <input type="text" id="search-inout" className='w-1/4 bg-white rounded-full px-4 py-3 ms-10 border-2 border-black text-sm capitalize placeholder:text-sm text-black outline-none' placeholder='search' onChange={(e) => handleSearchInput(e)} />
         </div>
@@ -96,7 +96,7 @@ const Search = () => {
                     <div className='w-full h-[300px] flex justify-between items-center px-5'>
                       <div className='w-[38%] py-4 bg-[#1f1f1f] rounded-lg cursor-pointer hover:bg-[#282828] group relative flex justify-center flex-col gap-5' onClick={() => openPlaylist(searchData.playlist.id)}>
                         <div className='w-full px-4 pt-4'>
-                          <img src={searchData?.playlist?.image} className='w-[120px] h-[120px] shadow-md group-hover:shadow-black' />
+                          <Img src={searchData?.playlist?.image} className='w-[120px] h-[120px] shadow-md group-hover:shadow-black' />
                         </div>
                         <h1 className='px-4 text-2xl font-bold'>{searchData?.playlist?.name}</h1>
                         <div className='w-1/4 flex justify-between items-center'>
@@ -112,7 +112,7 @@ const Search = () => {
                           searchData.songs.slice(0, 4).map(song => (
                             <li className='w-full flex justify-between cursor-pointer hover:bg-[#2A2A2A] group' key={song.id}>
                               <div className='w-[50px] h-[50px] object-cover'>
-                                <img className='w-full h-full object-cover' src={song.image} />
+                                <Img className='w-full h-full object-cover' src={song.image}/>
                               </div>
                               <div className='w-full flex justify-between items-center'>
                                 <div className='px-3'>

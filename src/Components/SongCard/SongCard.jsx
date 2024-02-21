@@ -3,6 +3,7 @@ import { useStateProvider } from '../../Store/UserContext'
 import { reducerCases } from '../../Store/constants';
 import { FaPlayCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+import Img from '../LazyImages/Img'
 
 const SongCard = (props) => {
   const [{ token }, dispatch] = useStateProvider();
@@ -31,7 +32,7 @@ const SongCard = (props) => {
         <FaPlayCircle className='text-[50px] text-[#1ED760]' />
       </div>
       <div className='w-[180px] h-[180px]'>
-        <img src={props.songImg} alt="song-img" className='w-full h-full object-contain' />
+        <Img src={props.songImg} className='w-full h-full object-contain'/>
       </div>
       <div className='mt-2 text-left justify-start pb-3'>
         <h2 className='text-md text-white text-left font-bold tracking-wide my-2'>{props.songName}</h2>

@@ -11,6 +11,7 @@ import Controls from '../../Sections/Controls/Controls'
 import RightSection from '../../Sections/RightSection/RightSection.jsx'
 import Navbar from '../../Components/Navbar/Navbar.jsx'
 import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper.jsx'
+import Img from '../../Components/LazyImages/Img.jsx'
 
 const Playlist = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()
@@ -122,7 +123,7 @@ const Playlist = () => {
                                                     <td className='flex items-center justify-center'>{index + 1}</td>
                                                     <td>
                                                         <div className='flex items-center justify-start'>
-                                                            <img src={image} alt="track" />
+                                                            <Img src={image} />
                                                             <div className='flex flex-col text-left px-5'>
                                                                 <span>{name}</span>
                                                                 <span>{artists}</span>

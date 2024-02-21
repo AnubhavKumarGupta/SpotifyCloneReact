@@ -2,6 +2,7 @@ import React from 'react'
 import { useStateProvider } from '../../../Store/UserContext'
 import { reducerCases } from '../../../Store/constants';
 import { useNavigate } from 'react-router';
+import Img from '../../LazyImages/Img'
 
 const LibraryItem = (props) => {
   let [{ token }, dispatch] = useStateProvider();
@@ -17,7 +18,7 @@ const LibraryItem = (props) => {
       updatePlaylist(props.id);
     }}>
       <div className='w-[50px] h-[50px] mr-4'>
-        <img src={props.coverImg} alt={props.id} className='h-full w-full object-cover' />
+        <Img src={props.coverImg} className='h-full w-full object-cover' />
       </div>
       <div className='flex flex-col'>
         <h2 className='text-md text-white font-bold'>{props.title}</h2>

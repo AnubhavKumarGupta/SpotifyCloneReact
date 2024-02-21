@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useStateProvider } from "../../Store/UserContext"
 import { reducerCases } from "../../Store/constants"
+import Img from '../LazyImages/Img'
 
 const CurrentlyPlaying = () => {
     const [{ token, currentlyPlaying }, dispatch] = useStateProvider()
@@ -34,7 +35,7 @@ const CurrentlyPlaying = () => {
                 currentlyPlaying &&
                 <div className="w-[350px] h-full flex items-center justify-start px-4 cursor-pointer">
                     <div className="w-[70px] h-full rounded-lg">
-                        <img src={currentlyPlaying.image} alt={currentlyPlaying.name} className="w-full h-full object-contain rounded-lg" />
+                        <Img src={currentlyPlaying.image} className="w-full h-full object-contain rounded-lg"  />
                     </div>
                     <div className="text-white flex flex-col text-left ml-3">
                         <h2 className="text-md">{currentlyPlaying.name}</h2>

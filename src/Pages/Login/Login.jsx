@@ -1,5 +1,7 @@
 import './Login.css'
 import background from '../../assests/BGcover.webp'
+import Img from '../../Components/LazyImages/Img';
+
 const Login = (props) => {
     const handleLogin = () => {
         const CLIENT_ID = "686e35c887ab457596f1134cbf938a3e";
@@ -18,9 +20,11 @@ const Login = (props) => {
     }
 
     return (
-        <div className='w-full h-full flex flex-col items-center justify-center'>
-            <img src={background} id='bg-img' loading='eager' />
-            <div id='login-page' className='flex flex-col items-center'>
+        <div className='w-full h-full flex flex-col items-center justify-center relative'>
+            <div className='w-full h-full absolute top-0 left-0'>
+                <Img src={background} className='w-full h-full object-cover'/>
+            </div>
+            <div id='login-page' className='flex flex-col items-center absolute top-0 left-0'>
                 <h2 className='text-5xl text-white font-bold tracking-wide capitalize  text-center mt-20'>Spotify clone by</h2>
                 <h2 className='text-5xl text-white font-bold tracking-wide capitalize mt-3 text-center'>Nikhil Sai</h2>
                 <div className='flex flex-col items-center justify-center mt-10'>
