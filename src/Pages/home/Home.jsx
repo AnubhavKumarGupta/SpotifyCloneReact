@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import Left from '../../Sections/LeftSection/Left'
 import RightSection from '../../Sections/RightSection/RightSection'
 import Controls from '../../Sections/Controls/Controls'
 import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper'
@@ -8,6 +7,7 @@ import SongRow from '../../Components/rows/songRow/SongRow'
 import ArtistRow from '../../Components/rows/artistRow/ArtistRow';
 import LoadingSkeletonRow from '../../Components/LoadingSkeletons/LoadingSkeletonRow'
 import Navbar from '../../Components/Navbar/Navbar'
+import Left from '../../Sections/LeftSection/Left'
 
 import './Home.css';
 
