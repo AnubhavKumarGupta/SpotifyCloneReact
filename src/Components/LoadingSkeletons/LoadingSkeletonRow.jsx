@@ -1,5 +1,5 @@
 import SongCardSkeleton from "./SongCardSkeleton.jsx"
-import './SongCardSkeleton.css'
+import './songCardSkeleton.css'
 
 const LoadingSkeletonRow = () => {
     return (
