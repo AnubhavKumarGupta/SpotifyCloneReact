@@ -1,7 +1,9 @@
-const ContentWrapper = ({ children, className }) => {
+import { Children } from "react"
+
+const ContentWrapper = ({ className }) => {
     return (
         <div className={className}>
-            {children}
+            {Children}
         </div>
     )
 }
