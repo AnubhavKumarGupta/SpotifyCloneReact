@@ -3,7 +3,6 @@ import logo from '../../assests/Spotify.png'
 import { AiFillHome } from 'react-icons/ai'
 import { BiSearchAlt } from 'react-icons/bi'
 import { useStateProvider } from '../../Store/UserContext'
-import { reducerCases } from '../../Store/constants'
 import { useNavigate } from 'react-router'
 const TopNav = () => {
   const [{ token }, dispatch] = useStateProvider();

@@ -1,5 +1,5 @@
-import TopNav from '../../components/Navbar/TopNav'
-import Library from '../../components/Library/Library'
+import TopNav from '../../Components/Navbar/TopNav'
+import Library from '../../Components/Library/Library'
 
 const Left= (props) => {
   return (
