@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 
 import Controls from '../../Sections/Controls/Controls'
-import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper'
 import SongRow from '../../Components/rows/songRow/SongRow'
 import ArtistRow from '../../Components/rows/artistRow/ArtistRow';
 import LoadingSkeletonRow from '../../Components/LoadingSkeletons/LoadingSkeletonRow'
-
-import Navbar from '../../Components/Navbar/Navbar'
+import ContentWrapper from '../../Components/ContentWrapper/ContentWrapper';
+import Navbar from '../../Components/Navbar/Navbar';
 
 import RightSection from '../../Sections/RightSection/RightSection';
 import Left from '../../Sections/LeftSection/Left'
