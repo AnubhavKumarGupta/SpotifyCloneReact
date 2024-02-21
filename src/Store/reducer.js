@@ -2,31 +2,18 @@ import { reducerCases } from "./constants";
 
 export const intialState = {
   token: null, 
-
   userInfo: null, 
-
   selectedPlaylist:null,
-
   selectedAlbum:null,
-
   currentlyPlaying:null,
-
   playerState:false,
-
   view:'HOME',
-
   selectedPlaylistId:'45pGRUpBruO3WnMDiAj2oq',
-
   selectedAlbumInfo: {},
-
   artistsData: [],
-
   playlists: [],
-
   featuredPlaylist : [],
-
   newReleases:[],
-
   searchData : null,
 };
 

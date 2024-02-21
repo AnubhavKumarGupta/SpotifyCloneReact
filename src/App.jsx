@@ -3,7 +3,7 @@ import { UserContextProvider, useStateProvider } from './Store/UserContext';
 import { reducerCases } from "./Store/constants";
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import reducer, { intialState } from "./Store/reducer";
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 import Login from "./pages/Login/Login";
 import Search from './pages/search/Search'
 import Playlist from './pages/playlist/Playlist'
@@ -19,7 +19,6 @@ function App() {
             const token = hash.substring(1).split('&')[0].split('=')[1];
             dispatch({ type: reducerCases.SET_TOKEN, token })
         }
-
         navigate('/login');
     }, [dispatch])
 
