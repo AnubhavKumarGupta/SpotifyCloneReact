@@ -3,12 +3,13 @@ import { UserContextProvider, useStateProvider } from './Store/UserContext';
 import { reducerCases } from "./Store/constants";
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import reducer, { intialState } from "./Store/reducer";
-import Home from './pages/home/Home';
-import Login from "./pages/Login/Login";
-import Search from './pages/search/Search'
-import Playlist from './pages/playlist/Playlist'
-import Album from './pages/album/Album'
-import Error from './pages/error/Error'
+
+import Home from './Pages/home/Home';
+import Login from "./Pages/Login/Login";
+import Search from './Pages/search/Search'
+import Playlist from './Pages/playlist/Playlist'
+import Album from './Pages/album/Album'
+import Error from './Pages/error/Error'
 
 function App() {
     const [{ token }, dispatch] = useStateProvider()
