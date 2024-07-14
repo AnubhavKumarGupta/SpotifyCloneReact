@@ -16,37 +16,37 @@ import Img from '../../Components/LazyImages/Img.jsx'
 const Playlist = () => {
     const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider()
     useEffect(() => {
-        const getIntialPlaylist = async () => {
-            const response = await axios.get(`https://api.spotify.com/v1/playlists/${selectedPlaylistId}`, {
-                headers: {
-                    Authorization: 'Bearer ' + token,
-                    'Content-Type': 'application/json'
-                }
-            })
-            const selectedPlaylist = {
-                id: response.data.id,
-                name: response.data.name,
-                description: response.data.description.startsWith("<a")
-                    ? ""
-                    : response.data.description,
-                image: response.data.images[0].url,
-                tracks: response.data.tracks.items.map(({ track }) => ({
-                    id: track.id,
-                    name: track.name,
-                    artists: track.artists.map((artist) => artist.name),
-                    image: track.album.images[2]?.url,
-                    duration: track.duration_ms,
-                    album: track.album.name,
-                    uri: track.uri,
-                    track_number: track.track_number,
-                })),
-            };
-            // console.log('track uri',selectedPlaylist.tracks[0].uri);
-            dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist })
-        };
         getIntialPlaylist();
     }, [token, selectedPlaylistId, dispatch])
 
+    const getIntialPlaylist = async () => {
+        const response = await axios.get(`https://api.spotify.com/v1/playlists/${selectedPlaylistId}`, {
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        })
+        const selectedPlaylist = {
+            id: response.data.id,
+            name: response.data.name,
+            description: response.data.description.startsWith("<a")
+                ? ""
+                : response.data.description,
+            image: response.data.images[0].url,
+            tracks: response.data.tracks.items.map(({ track }) => ({
+                id: track.id,
+                name: track.name,
+                artists: track.artists.map((artist) => artist.name),
+                image: track.album.images[2]?.url,
+                duration: track.duration_ms,
+                album: track.album.name,
+                uri: track.uri,
+                track_number: track.track_number,
+            })),
+        };
+        // console.log('track uri',selectedPlaylist.tracks[0].uri);
+        dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist })
+    };
 
     const getSongInfo = async (trackId) => {
         const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
@@ -91,7 +91,7 @@ const Playlist = () => {
         <ContentWrapper className="w-full h-screen overflow-hidden flex">
             <Left />
             <RightSection className="bg-[#121212] overflow-y-scroll playlist-container">
-                <Navbar/>
+                <Navbar />
                 {
                     selectedPlaylist && (
                         <>

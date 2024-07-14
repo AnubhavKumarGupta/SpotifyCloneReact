@@ -15,7 +15,7 @@ import './Library.css'
 
 
 
-const Library = (props) => {
+const Library = () => {
 
   const [{ token, playlists }, dispatch] = useStateProvider();
   useEffect(() => {
@@ -30,12 +30,12 @@ const Library = (props) => {
         }
       );
       const { items } = response.data;
-      const playlists = items.map(({ name, id ,type, owner,images}) => {
-        const {url} = images[1]; 
-        const {display_name } = owner;
-        return { name, id ,type , display_name , url};
+      const playlists = items.map(({ name, id, type, owner, images }) => {
+        const { url } = images[0];
+        const { display_name } = owner;
+        return { name, id, type, display_name, url };
       });
-      
+
       dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
     };
     getPlaylistData();
@@ -65,14 +65,14 @@ const Library = (props) => {
             <div className='flex items-center justify-between mx-4'><BiSearchAlt2 className='text-lg text-gray-400 hover:text-white cursor-pointer' /> <h2 className='flex items-center justify-center text-md text-gray-400 hover:text-white cursor-pointer'>Recent <AiOutlineBars className='mx-1' /></h2></div>
             <div className='wrapper w-full'>
               {
-                playlists.map(item => <LibraryItem 
-                  key={item.id} 
+                playlists.map(item => <LibraryItem
+                  key={item.id}
                   id={item.id}
                   coverImg={item.url}
-                  title={item.name} 
-                  type={item.type} 
+                  title={item.name}
+                  type={item.type}
                   artist={item.display_name}
-                  />)
+                />)
               }
             </div>
           </div>
